@@ -28,14 +28,6 @@ pub fn str_function(a: String) -> (String, String) {
 }
 
 
-
-
-
-
-
-
-
-
 //pub fn str_function(a: String) -> (String, String) {
 //    let str_to_f64 = a.parse::<f64>();
 //
