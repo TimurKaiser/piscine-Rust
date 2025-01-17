@@ -18,15 +18,25 @@ fn main() {
     // Création du canevas pour dessiner sur la fenêtre (mais on ne dessine rien ici)
     let mut canvas = window.into_canvas().build().unwrap();
 
-    // Positionner le point d'origine en bas à gauche
-    let x = 0;
-    let y = 800 - 1;
-    canvas.draw_point((x, y)).unwrap();
+    canvas.set_draw_color(Color::RGB(255, 0, 0)); // Rouge
+    // canvas.draw_line((300, 800 - 1), (300, 500));
  
-    // canvas.set_draw_color(Color::RGB(255, 0, 0)); // Rouge
-    // canvas.draw_point((400, 400)).unwrap();
+    //canvas.draw_point((300, 1)).unwrap();
+    //canvas.draw_point((300, 300)).unwrap();
 
 
+    canvas.draw_line((300, 1), (300, 300));
+    canvas.draw_line((300, 300), (1, 300));
+
+    canvas.draw_line((300, 500), (300, 799));
+    canvas.draw_line((1, 500), (300, 500));
+
+    canvas.draw_line((500, 1), (500, 300));
+    canvas.draw_line((500, 300), (799, 300));
+
+    canvas.draw_line((500, 500), (500, 799));
+    canvas.draw_line((500, 500), (799, 500));
+    
     canvas.present();
 
     // Boucle d'événements pour gérer la fermeture de la fenêtre
