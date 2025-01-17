@@ -1,8 +1,10 @@
 extern crate sdl2;
+mod dash;
 
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
 use sdl2::pixels::Color;
+use dash::draw_dashed_line;
 
 fn main() {
     // Initialisation de SDL2
@@ -19,11 +21,13 @@ fn main() {
     let mut canvas = window.into_canvas().build().unwrap();
 
     canvas.set_draw_color(Color::RGB(255, 0, 0)); // Rouge
-    // canvas.draw_line((300, 800 - 1), (300, 500));
- 
-    //canvas.draw_point((300, 1)).unwrap();
-    //canvas.draw_point((300, 300)).unwrap();
 
+    draw_dashed_line(&mut canvas, (11, 400), (290, 400), 5, 5);
+    draw_dashed_line(&mut canvas, (510, 400), (789, 400), 5, 5);
+    // draw_dashed_line(&mut canvas, (400, 290), (400, 11), 5, 5);
+
+
+    
 
     canvas.draw_line((300, 1), (300, 300));
     canvas.draw_line((300, 300), (1, 300));
@@ -53,3 +57,4 @@ fn main() {
         }
     }
 }
+
