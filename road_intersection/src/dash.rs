@@ -1,6 +1,5 @@
 use sdl2::render::Canvas;
 use sdl2::video::Window;
-use sdl2::pixels::Color;
 use sdl2::rect::Point;
 
 pub fn draw_dashed_line( canvas: &mut Canvas<Window>, start: (i32, i32), end: (i32, i32), dash_length: i32, space_length: i32 ) {
