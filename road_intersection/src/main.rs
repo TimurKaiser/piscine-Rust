@@ -24,7 +24,7 @@ fn main() {
     let mut canvas = window.into_canvas().build().unwrap();
 
     // Créer l'instance de TextRenderer
-    let text_renderer = TextRenderer::new(&ttf_context, "/home/baran/Z01/piscine-Rust/road_intersection/src/font/DejaVuSans.ttf", 24);
+    let text_renderer = TextRenderer::new(&ttf_context, "/home/baran/Z01/piscine-Rust/road_intersection/src/font/DejaVuSans.ttf", 18);
 
     // Appeler la fonction draw_map pour dessiner la carte
     map::draw_map(&mut canvas, &text_renderer);
