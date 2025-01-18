@@ -1,0 +1,30 @@
+use sdl2::pixels::Color;
+use sdl2::render::Canvas;
+use sdl2::video::Window;
+use crate::text::TextRenderer;
+use crate::dash::{draw_dashed_line, draw_vertical_dashed_line};
+
+pub fn draw_map( canvas: &mut Canvas<Window>, text_renderer: &TextRenderer ) {
+    canvas.set_draw_color(Color::RGB(255, 255, 255)); // Blanc
+
+    // Dessiner des lignes et des points
+    draw_dashed_line(canvas, (11, 400), (290, 400), 5, 5);
+    draw_dashed_line(canvas, (510, 400), (789, 400), 5, 5);
+    draw_vertical_dashed_line(canvas, (400, 11), (290, 290), 5, 5);
+    draw_vertical_dashed_line(canvas, (400, 510), (400, 789), 5, 5);
+
+    let _ = canvas.draw_line((300, 1), (300, 300));
+    let _ = canvas.draw_line((300, 300), (1, 300));
+    let _ = canvas.draw_line((300, 500), (300, 799));
+    let _ = canvas.draw_line((1, 500), (300, 500));
+    let _ = canvas.draw_line((500, 1), (500, 300));
+    let _ = canvas.draw_line((500, 300), (799, 300));
+    let _ = canvas.draw_line((500, 500), (500, 799));
+    let _ = canvas.draw_line((500, 500), (799, 500));
+
+    let _ = canvas.draw_point((100, 100));
+    let _ = canvas.draw_point((250, 100));
+
+    // Dessiner le texte
+    text_renderer.draw_text(canvas, "TEST", (400, 400), Color::RGB(0, 0, 255));
+}
