@@ -5,6 +5,7 @@ use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
 use sdl2::pixels::Color;
 use dash::draw_dashed_line;
+use dash::draw_vertical_dashed_line;
 
 fn main() {
     // Initialisation de SDL2
@@ -25,6 +26,11 @@ fn main() {
     draw_dashed_line(&mut canvas, (11, 400), (290, 400), 5, 5);
     draw_dashed_line(&mut canvas, (510, 400), (789, 400), 5, 5);
     // draw_dashed_line(&mut canvas, (400, 290), (400, 11), 5, 5);
+
+    draw_vertical_dashed_line(&mut canvas, (400, 11), (290, 290), 5, 5);
+    draw_vertical_dashed_line(&mut canvas, (400, 510), (400, 789), 5, 5);
+
+
 
 
     
