@@ -50,7 +50,7 @@ fn main() {
         .window("Fenêtre SDL2", 800, 800)
         .position_centered()
         .build()
-        .unwrap();
+        .expect("failed to build window");
 
     // Création du canevas pour dessiner sur la fenêtre
     let mut canvas = window.into_canvas().build().unwrap();
@@ -71,7 +71,7 @@ fn main() {
     let window_size = 800;  // Taille de la fenêtre
 
     // Appeler la fonction draw_map pour dessiner la carte
-    map::draw_map(&mut canvas, &text_renderer);
+    map::draw_map(&mut canvas, text_renderer);
 
     // Afficher le résultat initial
     canvas.present();
@@ -96,7 +96,7 @@ fn main() {
         canvas.clear();
 
         // Dessiner la carte (en supposant que la fonction `map::draw_map` dessine la carte)
-        map::draw_map(&mut canvas, &text_renderer);
+        map::draw_map(&mut canvas, text_renderer);
 
         // Dessiner la voiture
         car.crate_car(&mut canvas);
@@ -111,100 +111,3 @@ fn main() {
         std::thread::sleep(std::time::Duration::from_millis(16)); // 60 FPS
     }
 }
-
-
-//extern crate sdl2;
-//mod dash;
-//mod text;
-//mod map;
-//
-//use sdl2::event::Event;
-//use sdl2::keyboard::Keycode;
-//use sdl2::pixels::Color;
-//use crate::text::TextRenderer;
-//
-//
-//
-//struct Car {
-//    x:          i32,
-//    y:          i32,
-//    velocity:   i32,
-//}
-//
-//
-//impl Car {
-//    fn moove(&mut self) {
-//        self.x -= self.velocity;
-//    }
-//
-//    fn crate_car(&self, canvas: &mut sdl2::render::Canvas<sdl2::video::Window>) {
-//        canvas.set_draw_color(Color::RGB(255, 0, 0));
-//        let car_dimention = Rect::new(self.x, self.y, 50, 30);
-//        canvas.fill_rect(car_dimention).unwrap();
-//    }
-//
-//    fn car_despawn(&mut self, window_size: i32) {
-//        if self.x < 0 {
-//            self.x = window_size;
-//        }
-//    }
-//}
-//
-//
-//
-//
-//fn main() {
-//    // Initialisation de SDL2
-//    let sdl_context = sdl2::init().unwrap();
-//    let video_subsystem = sdl_context.video().unwrap();
-//    // let ttf_context = sdl2::ttf::init().unwrap();
-//
-//    // Création de la fenêtre
-//    let window = video_subsystem
-//        .window("Fenêtre SDL2", 800, 800)
-//        .position_centered()
-//        .build()
-//        .unwrap();
-//
-//    // Création du canevas pour dessiner sur la fenêtre
-//    let mut canvas = window.into_canvas().build().unwrap();
-//
-//    // Créer l'instance de TextRenderer
-//    let text_renderer = TextRenderer::new(&ttf_context, "/home/baran/Z01/piscine-Rust/road_intersection/src/font/DejaVuSans.ttf", 18);
-//
-//    // askip pour le key
-//    let mut event_pump = sdl_context.event_pump().unwrap();
-//
-//    let mut car = Car {
-//        x:          800,
-//        y:          300,
-//        velocity:   5,
-//    };
-//
-//    let window_size = 800;
-//
-//    // Appeler la fonction draw_map pour dessiner la carte
-//    map::draw_map(&mut canvas, &text_renderer);
-//
-//    // Boucle d'événements pour gérer la fermeture de la fenêtre
-//    loop {
-//        for event in event_pump.poll_iter() {
-//            match event {
-//                Event::Quit { .. } |
-//                Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
-//                    return; // Quitter l'application si l'utilisateur ferme la fenêtre ou appuie sur Échap
-//                },
-//                Event::KeyDown { keycode: Some(Keycode::Left), .. } => {
-//                    car.moove();  // Déplacer la voiture à gauche lorsqu'on appuie sur la flèche gauche
-//                },
-//                _ => {}
-//            }
-//        }
-//    }
-//
-//    car.car_despawn(window_size);
-//
-//    canvas.present();
-//
-//}
-//

@@ -25,6 +25,7 @@ pub fn draw_map( canvas: &mut Canvas<Window>, text_renderer: &TextRenderer ) {
     let _ = canvas.draw_point((100, 100));
     let _ = canvas.draw_point((250, 100));
 
+
     // Dessiner le texte
     text_renderer.draw_text(canvas, "East", (10, 340), Color::RGB(0, 0, 255));
     text_renderer.draw_text(canvas, "East", (10, 440), Color::RGB(0, 0, 255));
